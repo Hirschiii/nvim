@@ -16,6 +16,9 @@ function pack:load_modules_packages()
 
   if fn.exists('g:disable_modules') == 1 then
     disable_modules = vim.split(vim.g.disable_modules, ',', { trimempty = true })
+    disable_modules = vim.tbl_map(function(k)
+      return 'modules/' .. k .. '/package'
+    end, disable_modules)
   end
 
   for _, f in pairs(list) do
@@ -41,6 +44,7 @@ function pack:boot_strap()
   local lazy = require('lazy')
   local opts = {
     lockfile = self.helper.path_join(self.data_path, 'lazy-lock.json'),
+    dev = { path = '~/Workspace' },
   }
   self:load_modules_packages()
   lazy.setup(self.repos, opts)
@@ -52,11 +56,19 @@ function pack:boot_strap()
   end
 end
 
-function pack.package(repo)
+_G.packadd = function(repo)
   if not pack.repos then
     pack.repos = {}
   end
   table.insert(pack.repos, repo)
+end
+
+_G.exec_filetype = function(group)
+  group = type(group) == 'string' and { group } or group
+  local curbuf = api.nvim_get_current_buf()
+  for _, g in ipairs(group) do
+    api.nvim_exec_autocmds('FileType', { group = g, pattern = vim.bo[curbuf].filetype })
+  end
 end
 
 return pack

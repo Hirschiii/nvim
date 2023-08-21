@@ -1,17 +1,26 @@
-local package = require('core.pack').package
 local conf = require('modules.ui.config')
 
-package({ 'glepnir/zephyr-nvim', config = conf.zephyr })
-
-package({ 'glepnir/dashboard-nvim', config = conf.dashboard })
-
-package({
-  'akinsho/nvim-bufferline.lua',
-  config = conf.nvim_bufferline,
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+packadd({
+  "folke/tokyonight.nvim",
+  config = conf.color,
 })
 
-package({
+-- packadd({
+--   'nvim-lualine/lualine.nvim',
+--   dependencies = {
+--     { 'nvim-tree/nvim-web-devicons', opt = true }
+--   }
+-- })
+
+packadd({
+  'glepnir/dashboard-nvim',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons'
+  },
+  config = conf.dashboard
+})
+
+packadd({
   'lukas-reineke/indent-blankline.nvim',
   event = 'BufRead',
   config = conf.indent_blankline,

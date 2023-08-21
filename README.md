@@ -13,40 +13,11 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/glepnir/dope/stargazers">
-    <img
-      alt="Stargazers"
-      src="https://img.shields.io/github/stars/glepnir/dope?style=for-the-badge&logo=starship&color=c678dd&logoColor=d9e0ee&labelColor=282a36"
-    />
-  </a>
-  <a href="https://github.com/glepnir/dope/issues">
-    <img
-      alt="Issues"
-      src="https://img.shields.io/github/issues/glepnir/dope?style=for-the-badge&logo=gitbook&color=f0c062&logoColor=d9e0ee&labelColor=282a36"
-    />
-  </a>
-  <a href="https://github.com/glepnir/dope/contributors">
-    <img
-      alt="Contributors"
-      src="https://img.shields.io/github/contributors/glepnir/dope?style=for-the-badge&logo=opensourceinitiative&color=abcf84&logoColor=d9e0ee&labelColor=282a36"
-    />
-  </a>
-</p>
-
-<p align="center">
   <img src="https://user-images.githubusercontent.com/41671631/176990490-aeb6111b-41ea-4767-bc03-c0aee4774a4e.png"
   height = "40%"
   width = "40%"
   />
 </p>
-
-## What is dope
-
-Many people are interested in my [personal configuration](https://github.com/glepnir/nvim). So I created dope.
-
-What does dope do? dope wants vimers to have their own config with high performance
-
-fast speed and modernity.
 
 ## Structure
 
@@ -86,9 +57,6 @@ fast speed and modernity.
 - `modlues` plugin module and config in this folder
 - `snippets` vscode snippets json file
 
-## Usage
-
-- Click button `Use this template` It will generate a new repo based on dope on your GitHub
 
 ### Cli tool
 

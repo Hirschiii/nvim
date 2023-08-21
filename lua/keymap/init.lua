@@ -1,58 +1,64 @@
-local keymap = require('core.keymap')
-local nmap, imap, cmap, xmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.xmap
-local silent, noremap = keymap.silent, keymap.noremap
-local opts = keymap.new_opts
-local cmd = keymap.cmd
+local api = vim.api
+require('keymap.remap')
+local map = require('core.keymap')
+local cmd = map.cmd
 
--- Use space as leader key
-vim.g.mapleader = ' '
-
--- leaderkey
-nmap({ ' ', '', opts(noremap) })
-xmap({ ' ', '', opts(noremap) })
-
--- usage example
-nmap({
-  -- noremal remap
-  -- close buffer
-  { '<C-x>k', cmd('bdelete'), opts(noremap, silent) },
-  -- save
-  { '<C-s>', cmd('write'), opts(noremap) },
-  -- yank
-  { 'Y', 'y$', opts(noremap) },
-  -- buffer jump
-  { ']b', cmd('bn'), opts(noremap) },
-  { '[b', cmd('bp'), opts(noremap) },
-  -- remove trailing white space
-  { '<Leader>t', cmd('TrimTrailingWhitespace'), opts(noremap) },
-  -- window jump
-  { '<C-h>', '<C-w>h', opts(noremap) },
-  { '<C-l>', '<C-w>l', opts(noremap) },
-  { '<C-j>', '<C-w>j', opts(noremap) },
-  { '<C-k>', '<C-w>k', opts(noremap) },
-})
-
-imap({
-  -- insert mode
-  { '<C-h>', '<Bs>', opts(noremap) },
-  { '<C-e>', '<End>', opts(noremap) },
-})
-
--- commandline remap
-cmap({ '<C-b>', '<Left>', opts(noremap) })
--- usage of plugins
-nmap({
-  -- plugin manager: Lazy.nvim
-  { '<Leader>pu', cmd('Lazy update'), opts(noremap, silent) },
-  { '<Leader>pi', cmd('Lazy install'), opts(noremap, silent) },
-  -- dashboard
-  { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
-  { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },
-  { '<Leader>sl', cmd('SessionLoad'), opts(noremap, silent) },
-  -- nvimtree
-  { '<Leader>e', cmd('NvimTreeToggle'), opts(noremap, silent) },
+map.n({
+  -- Lspsaga
+  ['[e'] = cmd('Lspsaga diagnostic_jump_next'),
+  [']e'] = cmd('Lspsaga diagnostic_jump_prev'),
+  ['K'] = cmd('Lspsaga hover_doc'),
+  ['ga'] = cmd('Lspsaga code_action'),
+  ['gd'] = cmd('Lspsaga peek_definition'),
+  ['gp'] = cmd('Lspsaga goto_definition'),
+  ['gr'] = cmd('Lspsaga rename'),
+  ['gh'] = cmd('Lspsaga finder'),
+  ['<Leader>o'] = cmd('Lspsaga outline'),
+  ['<Leader>dw'] = cmd('Lspsaga show_workspace_diagnostics'),
+  ['<Leader>db'] = cmd('Lspsaga show_buf_diagnostics'),
+  -- dbsession
+  ['<Leader>ss'] = cmd('SessionSave'),
+  ['<Leader>sl'] = cmd('SessionLoad'),
   -- Telescope
-  { '<Leader>b', cmd('Telescope buffers'), opts(noremap, silent) },
-  { '<Leader>fa', cmd('Telescope live_grep'), opts(noremap, silent) },
-  { '<Leader>ff', cmd('Telescope find_files'), opts(noremap, silent) },
+  ['<Leader>a'] = cmd('Telescope app'),
+  ['<Leader>fa'] = cmd('Telescope live_grep'),
+  ['<Leader>fs'] = cmd('Telescope grep_string'),
+  ['<Leader>ff'] = cmd('Telescope find_files find_command=rg,--ignore,--hidden,--files'),
+  ['<Leader>fg'] = cmd('Telescope git_files'),
+  ['<Leader>fw'] = cmd('Telescope grep_string'),
+  ['<Leader>fh'] = cmd('Telescope help_tags'),
+  ['<Leader>fo'] = cmd('Telescope oldfiles'),
+  ['<Leader>gc'] = cmd('Telescope git_commits'),
+  ['<Leader>fd'] = cmd('Telescope dotfiles'),
+  -- flybuf.nvim
+  ['<Leader>j'] = cmd('FlyBuf'),
+  --gitsign
+  [']g'] = cmd('lua require"gitsigns".next_hunk()<CR>'),
+  ['[g'] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
+  --rapid
+  ['<leader>c'] = cmd('Rapid'),
 })
+
+map.n('<Leader>e', function()
+  vim.cmd('Telescope file_browser')
+  local esc_key = api.nvim_replace_termcodes('<Esc>', true, false, true)
+  api.nvim_feedkeys(esc_key, 'n', false)
+end)
+
+--template.nvim
+map.n('<Leader>t', function()
+  local tmp_name
+  if vim.bo.filetype == 'lua' then
+    tmp_name = 'nvim_temp'
+  end
+  if tmp_name then
+    vim.cmd('Template ' .. tmp_name)
+    return
+  end
+  return ':Template '
+end, { expr = true })
+
+-- Lspsaga floaterminal
+map.nt('<A-d>', cmd('Lspsaga term_toggle'))
+
+map.nx('ga', cmd('Lspsaga code_action'))

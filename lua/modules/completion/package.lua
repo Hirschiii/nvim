@@ -1,7 +1,6 @@
-local package = require('core.pack').package
 local conf = require('modules.completion.config')
 
-package({
+packadd({
   'neovim/nvim-lspconfig',
   -- used filetype to lazyload lsp
   -- config your language filetype in here
@@ -9,14 +8,7 @@ package({
   config = conf.nvim_lsp,
 })
 
-package({
-  'glepnir/lspsaga.nvim',
-  event = 'BufRead',
-  dev = false,
-  config = conf.lspsaga,
-})
-
-package({
+packadd({
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   config = conf.nvim_cmp,
@@ -24,8 +16,10 @@ package({
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-buffer' },
+    { 'onsails/lspkind.nvim' },
     { 'saadparwaiz1/cmp_luasnip' },
+    { "rafamadriz/friendly-snippets" },
   },
 })
 
-package({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })
+packadd({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })

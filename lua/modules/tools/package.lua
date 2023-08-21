@@ -1,7 +1,6 @@
-local package = require('core.pack').package
 local conf = require('modules.tools.config')
 
-package({
+packadd({
   'nvim-telescope/telescope.nvim',
   cmd = 'Telescope',
   config = conf.telescope,
@@ -11,7 +10,7 @@ package({
   },
 })
 
-package({
+packadd({
   'glepnir/hlsearch.nvim',
   event = 'BufRead',
   config = function()
