@@ -12,13 +12,6 @@
   />
 </h1>
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/41671631/176990490-aeb6111b-41ea-4767-bc03-c0aee4774a4e.png"
-  height = "40%"
-  width = "40%"
-  />
-</p>
-
 ## Structure
 
 ```
@@ -87,6 +80,64 @@ dope will auto read this file at startup.
 
 
 ### How to config keymap
+
+In dope there are some apis that make it easy to set keymap. All apis are defined in `core/keymap.lua`.
+
+```lua
+keymap.(n/i/c/v/x/t)map -- function to generate keymap by vim.keymap.set
+keymap.new_opts -- generate opts into vim.keymap.set
+-- function type that work with keymap.new_opts
+keymap.silent keymap.noremap keymap.expr keymap.nowait keymap.remap
+keymap.cmd -- just return string with <Cmd> and <CR>
+keymap.cu -- work like cmd but for visual map
+```
+
+Use these apis to config your keymap in `keymap` folder. In this folder `keymap/init.lua` is necessary but if you
+
+have many vim mode remap you can config them in `keymap/other-file.lua` in dope is `config.lua` just an
+
+example file. Then config plugins keymap in `keymap/init.lua`. the example of api usage
+
+```lua
+-- generate keymap in noremal mode
+nmap {
+  -- packer
+  {'<Leader>pu',cmd('Lazy update'),opts(noremap,silent,'Lazy update')},
+   {"<C-h>",'<C-w>h',opts(noremap)},
+  
+}
+
+also you can pass a table not include sub table to `map` like
+
+```lua
+nmap {'key','rhs',opts(noremap,silent)}
+```
+
+`<leader>...`-keybindings are configured with `whichkey`.
+For this to work we need to require the `whichkey` module. 
+`Whichkey` groups the keybindings. So you can the for example the
+`l` group for `LSP`. If you have the default config and you hit `<leader>l`
+on your keyboard should `whichkey` pop up after some time and it will
+show you the next options.
+
+```lua
+local which_key = require("modules.editor.config")
+local mapping = {
+  l = {
+    name = "LSP",
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+  }
+}
+
+local opts = {
+  prefix = "<leader>",
+}
+
+-- return mapping, opts
+which_key.which_key_regester(mapping, opts)
+```
+
+use `:h vim.keymap.set` to know more about.
 
 
 
