@@ -14,6 +14,20 @@ packadd({
 })
 
 packadd({
+  'junegunn/vim-easy-align'
+})
+
+packadd({
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  config = conf.which_key,
+})
+
+packadd({
   "kylechui/nvim-surround",
   version = "*", -- Use for stability; omit to use `main` branch for the latest features
   event = "InsertEnter",
@@ -46,7 +60,27 @@ packadd({
 })
 
 packadd({
-'turbio/bracey.vim',
-cmd = { "Bracey"},
-built = "npm install --prefix -g server"
+  'turbio/bracey.vim',
+  cmd = { "Bracey" },
+  built = "npm install --prefix server"
+})
+
+packadd({
+  "folke/neodev.nvim",
+  event = "VeryLazy",
+  config = conf.neodev,
+})
+
+packadd({
+  'glepnir/flybuf.nvim',
+  cmd = 'FlyBuf',
+  config = function()
+    require('flybuf').setup({})
+  end
+})
+
+packadd({
+  "nvimdev/guard.nvim",
+  event = "BufEnter",
+  config = conf.guard
 })

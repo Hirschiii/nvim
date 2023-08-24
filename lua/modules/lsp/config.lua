@@ -8,7 +8,7 @@ function config.lsp_zero()
 
 
   require('mason-lspconfig').setup({
-    ensure_installed = { 'html', 'custom_elements_ls' }
+    ensure_installed = { 'html', 'custom_elements_ls', 'cssls', 'cssmodules_ls', 'emmet_language_server'}
   })
 
   lsp.on_attach(function(client, bufnr)

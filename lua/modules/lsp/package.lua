@@ -15,14 +15,31 @@ packadd({
   cmd = { "LspInfo", "LspInstall", "LspUninstall" },
   dependencies = {
     -- LSP Support
-    { 'neovim/nvim-lspconfig' },           -- Required
-    { 'williamboman/mason.nvim' },         -- Optional
+    { 'neovim/nvim-lspconfig' },             -- Required
+    { 'williamboman/mason.nvim' },           -- Optional
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },   -- Required
+    { 'hrsh7th/nvim-cmp' },     -- Required
     { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    { 'L3MON4D3/LuaSnip' },   -- Required
+    { 'L3MON4D3/LuaSnip' },     -- Required
+
+    { "folke/neodev.nvim" }
   },
   config = conf.lsp_zero,
+})
+
+packadd({
+  'nvimdev/lspsaga.nvim',
+  config = function()
+    require('lspsaga').setup({
+      ui = {
+        code_action = '',
+      },
+    })
+  end,
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter', -- optional
+    'nvim-tree/nvim-web-devicons'      -- optional
+  }
 })
