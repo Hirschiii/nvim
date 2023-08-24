@@ -139,6 +139,84 @@ which_key.which_key_regester(mapping, opts)
 
 use `:h vim.keymap.set` to know more about.
 
+### Snippets
+
+We configure snippets with `LuaSnip`. All our snippets will be found in
+`~/.config/snippets` but you can change the location if you want to.
+The location is defined in `modules.completion.config.lua_snip` with:
+
+```lua
+require('luasnip.loaders.from_lua').lazy_load({ paths = vim.fn.stdpath('config') .. '/snippets' })
+```
+
+You can configure your snippets through `.json` or `.lua` whit lua being more dynamic.
+To create your snippet you can choose to put it in `all.lua/json` or in a file lice
+`{filetype}.lua/json`
+
+#### Json snippets
+
+for the json snippets to work you have to call them in `package.json` in the same directory.
+
+```json
+{
+  "contributes": {
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./lua.json"
+      }
+    ]
+  }
+}
+```
+
+In `lua.json` you can than configure you fix snippets like:
+
+```json
+{
+  "_G": {
+    "body": "_G(${0:...})",
+    "description": "5.1,5.2,5.3\n\n_G",
+    "prefix": "_G",
+    "scope": "source.lua"
+  },
+}
+```
+
+#### Lua snippets
+
+The lua snippets are defind in `{filetype}.lua` and the file `returns` a list of snippets.
+
+```lua
+return {
+  s("ctrig", t("also loaded!!")),
+}
+```
+
+You can create even dynamic snippets with functions, options, insertpoints and much more...
+
+```markdown.lua
+s({
+        trig = "meta",
+        namr = "Metadata",
+        dscr = "Yaml metadata format for markdown"
+    },
+    {
+        t({ "---",
+          "title: '" }), i(1, "note_title"), t({ "'",
+        "author: Niklas von Hirschfeld" }), t({ "",
+        "date: " }), f(date, {}), t({ "",
+        "tags: [" }), i(2), t({ "]",
+        "enableToc: true",
+        "---", "" }),
+        i(0)
+    })
+```
+
+- `s` stands for `snippet`
+- `t` for `textnode`
+- `f` for `function` or lua code
+- you can find more options [here](https://github.com/L3MON4D3/LuaSnip/blob/master/lua/luasnip/config.lua#L22-L48)
 
 
 ## Tips
@@ -153,11 +231,5 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 linux
 xset r rate 210 40
 ```
-
-## Donate
-
-[![](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/bobbyhub)
-
-If you'd like to support my work financially, buy me a drink through [paypal](https://paypal.me/bobbyhub)
 
 ## License MIT
