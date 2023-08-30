@@ -232,4 +232,17 @@ linux
 xset r rate 210 40
 ```
 
+# Troubleshooting
+
+## Bracey
+
+> If you get the error message: `Error:111: Connection refused` or something like that
+
+you have to install the `server` manually. To do so, go into the directory of this plugin (most of
+the time its: `~/.local/share/nvim/lazy/bracey.vim/` and install the server with:
+
+```shell
+npm install --prefix server
+```
+
 ## License MIT
