@@ -1,7 +1,7 @@
 local conf = require('modules.ui.config')
 
 packadd({
-  "folke/tokyonight.nvim",
+  'folke/tokyonight.nvim',
   config = conf.color,
 })
 
@@ -15,13 +15,22 @@ packadd({
 packadd({
   'glepnir/dashboard-nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons'
+    'nvim-tree/nvim-web-devicons',
   },
-  config = conf.dashboard
+  config = conf.dashboard,
 })
 
 packadd({
   'lukas-reineke/indent-blankline.nvim',
   event = 'BufRead',
   config = conf.indent_blankline,
+})
+
+packadd({
+  'm4xshen/hardtime.nvim',
+  dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+  opts = {},
+  config = function()
+    require('hardtime').setup()
+  end,
 })
