@@ -68,6 +68,13 @@ you can use `/bin/dope debug ui,editor` for debug modues. when you get trouble
 this is useful for your debug, this command mean disable `ui editor` modules.Then
 the plugins in `ui,editor` modules not load.
 
+## Dependencies
+
+- nvim version >= 8.1
+- npm
+- yarn
+- ( NerdFont )
+
 ## How to install plugins
 
 dope use [lazy.nvim](https://github.com/folk/lazy.nvim) as package management plugin. register a plugin in `package.lua` by using dope api `require('core.pack').package`. more usage check the
@@ -218,6 +225,17 @@ s({
 - `f` for `function` or lua code
 - you can find more options [here](https://github.com/L3MON4D3/LuaSnip/blob/master/lua/luasnip/config.lua#L22-L48)
 
+## Tools
+
+### LiveServe
+
+There is a LiveServe for `Markdown` and for `html` installed. Both are configured in
+`modules.editor`. For the html-liveserve I use the 
+[Bracey.nvim](https://github.com/turbio/bracey.vim) plugin and for Markdown the
+[Markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
+
+To start the `html`-Server, got into an html file and run the vimcmd `:Bracey`. For
+the markdownserver run: `:MarkdownPreview`
 
 ## Tips
 
