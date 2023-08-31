@@ -5,22 +5,22 @@ function config.dap()
     active = true,
     on_config_done = nil,
     breakpoint = {
-      texthl = "DiagnosticSignError",
-      linehl = "",
-      numhl = "",
+      texthl = 'DiagnosticSignError',
+      linehl = '',
+      numhl = '',
     },
     breakpoint_rejected = {
-      texthl = "DiagnosticSignError",
-      linehl = "",
-      numhl = "",
+      texthl = 'DiagnosticSignError',
+      linehl = '',
+      numhl = '',
     },
     stopped = {
-      texthl = "DiagnosticSignWarn",
-      linehl = "Visual",
-      numhl = "DiagnosticSignWarn",
+      texthl = 'DiagnosticSignWarn',
+      linehl = 'Visual',
+      numhl = 'DiagnosticSignWarn',
     },
     log = {
-      level = "info",
+      level = 'info',
     },
     ui = {
       auto_open = true,
@@ -28,15 +28,15 @@ function config.dap()
         threshold = vim.log.levels.INFO,
       },
       config = {
-        icons = { expanded = "", collapsed = "", circular = "" },
+        icons = { expanded = '', collapsed = '', circular = '' },
         mappings = {
           -- Use a table to apply multiple mappings
-          expand = { "<CR>", "<2-LeftMouse>" },
-          open = "o",
-          remove = "d",
-          edit = "e",
-          repl = "r",
-          toggle = "t",
+          expand = { '<CR>', '<2-LeftMouse>' },
+          open = 'o',
+          remove = 'd',
+          edit = 'e',
+          repl = 'r',
+          toggle = 't',
         },
         -- Use this to override mappings for specific elements
         element_mappings = {},
@@ -44,44 +44,44 @@ function config.dap()
         layouts = {
           {
             elements = {
-              { id = "scopes",      size = 0.33 },
-              { id = "breakpoints", size = 0.17 },
-              { id = "stacks",      size = 0.25 },
-              { id = "watches",     size = 0.25 },
+              { id = 'scopes', size = 0.33 },
+              { id = 'breakpoints', size = 0.17 },
+              { id = 'stacks', size = 0.25 },
+              { id = 'watches', size = 0.25 },
             },
             size = 0.33,
-            position = "right",
+            position = 'right',
           },
           {
             elements = {
-              { id = "repl",    size = 0.45 },
-              { id = "console", size = 0.55 },
+              { id = 'repl', size = 0.45 },
+              { id = 'console', size = 0.55 },
             },
             size = 0.27,
-            position = "bottom",
+            position = 'bottom',
           },
         },
         controls = {
           enabled = true,
           -- Display controls in this element
-          element = "repl",
+          element = 'repl',
           icons = {
-            pause = "",
-            play = "",
-            step_into = "",
-            step_over = "",
-            step_out = "",
-            step_back = "",
-            run_last = "",
-            terminate = "",
+            pause = '',
+            play = '',
+            step_into = '',
+            step_over = '',
+            step_out = '',
+            step_back = '',
+            run_last = '',
+            terminate = '',
           },
         },
         floating = {
           max_height = 0.9,
           max_width = 0.5, -- Floats will be treated as percentage of your screen.
-          border = "rounded",
+          border = 'rounded',
           mappings = {
-            close = { "q", "<Esc>" },
+            close = { 'q', '<Esc>' },
           },
         },
         windows = { indent = 1 },
@@ -93,16 +93,18 @@ function config.dap()
     },
   }
 
-  local status_ok, dap = pcall(require, "dap")
+  local status_ok, dap = pcall(require, 'dap')
   if not status_ok then
     return
   end
-  local dapui = require "dapui"
+  local dapui = require('dapui')
   dapui.setup(builtin_dap.ui.config)
 end
 
 function config.python()
   require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 end
+
+function config.java() end
 
 return config

@@ -76,7 +76,6 @@ end
 function config.ts_autotag() end
 
 function config.which_key_regester(mappings, opts)
-  print('Register')
   local which_key = require('which-key')
   which_key.register(mappings, opts)
 end
