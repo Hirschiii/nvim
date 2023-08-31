@@ -71,6 +71,7 @@ the plugins in `ui,editor` modules not load.
 ## Dependencies
 
 - nvim version >= 8.1
+    - Recommended is version 0.9.1
 - npm
 - yarn
 - ( NerdFont )
