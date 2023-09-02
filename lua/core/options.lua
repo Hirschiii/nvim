@@ -3,7 +3,7 @@ local opt = vim.opt
 opt.termguicolors = true
 opt.hidden = true
 opt.magic = true
-opt.virtualedit = 'block'
+opt.virtualedit = "block"
 -- opt.clipboard = 'unnamedplus'
 opt.wildignorecase = true
 opt.swapfile = false
@@ -20,14 +20,13 @@ opt.smartcase = true
 opt.infercase = true
 opt.cursorline = true
 
-if vim.fn.executable('rg') == 1 then
-  opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
-  opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+if vim.fn.executable("rg") == 1 then
+	opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+	opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 end
-
-opt.completeopt = 'menu,menuone,noselect'
+opt.completeopt = "menu,menuone,noselect"
 opt.showmode = false
-opt.shortmess = 'aoOTIcF'
+opt.shortmess = "aoOTIcF"
 opt.scrolloff = 2
 opt.sidescrolloff = 5
 opt.ruler = false
@@ -40,7 +39,7 @@ opt.cmdheight = 1
 opt.laststatus = 2
 opt.list = true
 
-opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
+opt.listchars = "tab:-->,nbsp:+,trail:·,extends:→,precedes:←"
 opt.pumblend = 10
 opt.winblend = 10
 opt.undofile = true
@@ -48,22 +47,22 @@ opt.undofile = true
 opt.smarttab = true
 opt.expandtab = true
 opt.autoindent = true
-opt.tabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
 
 opt.foldlevelstart = 99
-opt.foldmethod = 'marker'
+opt.foldmethod = "marker"
 
 opt.splitright = true
 opt.wrap = false
 
 opt.number = true
 opt.relativenumber = true
-opt.signcolumn = 'yes'
-opt.spelloptions = 'camel'
+opt.signcolumn = "yes"
+opt.spelloptions = "camel"
 
 opt.textwidth = 100
-opt.colorcolumn = '100'
+opt.colorcolumn = "100"
 
 -- local function get_signs()
 --   local buf = vim.api.nvim_get_current_buf()
