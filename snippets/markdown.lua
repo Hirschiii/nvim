@@ -45,4 +45,6 @@ return {
     })
 }, {
   s("autotrig", t("autotriggered, if enabled")),
+    s("t", fmt("- [{}] {}", { c(2, { t " ", t "-", t "x" }), i(1, "task") })),
+  s("stop", fmt("<!-- stop -->", {})),
 }
