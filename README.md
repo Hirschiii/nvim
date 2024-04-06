@@ -5,3 +5,4 @@
 - [ ] HTML plugins
 - [ ] better colors
 - [ ] organize lazy plugins
+- [ ] documentation nvim 
