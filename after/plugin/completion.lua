@@ -40,6 +40,13 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-e>"] = cmp.mapping.abort(),
+    ["<Return>"] = cmp.mapping(
+      cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      },
+      { "i", "c" }
+    ),
     ["<c-y>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
@@ -114,13 +121,6 @@ cmp.setup {
     -- end,
   },
 
-  -- Youtube:
-  --    the order of your sources matter (by default). That gives them priority
-  --    you can configure:
-  --        keyword_length
-  --        priority
-  --        max_item_count
-  --        (more?)
   sources = cmp.config.sources({
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
@@ -163,6 +163,10 @@ cmp.setup {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
+  },
+  preselect = "none",
+  completion = {
+    completeopt = "menu,menuone,noinsert,noselect",
   },
 
   ---@diagnostic disable-next-line: missing-fields

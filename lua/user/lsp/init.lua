@@ -359,7 +359,7 @@ end
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "jsonls" },
+  ensure_installed = { "lua_ls", "jsonls", "html" },
 }
 
 local setup_server = function(server, config)
