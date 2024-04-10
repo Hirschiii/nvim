@@ -1,5 +1,5 @@
 if not pcall(require, 'colorbuddy') then
-  return
+	return
 end
 
 vim.opt.termguicolors = true
@@ -34,8 +34,8 @@ Group.new('goTSType', g.Type.fg:dark(), nil, g.Type)
 Group.new('typescriptTSConstructor', g.pythonTSType)
 Group.new('typescriptTSProperty', c.blue)
 
--- vim.cmd [[highlight WinSeparator guifg=#4e545c guibg=None]]
-Group.new('WinSeparator', nil, nil)
+vim.cmd [[highlight WinSeparator guifg=#4e545c guibg=None]]
+-- Group.new('WinSeparator', nil, nil)
 
 -- I don't think I like highlights for text
 -- Group.new('LspReferenceText', nil, c.gray0:light(), s.bold)
@@ -89,7 +89,9 @@ vim.cmd([[
   hi link @tag.delimiter.html @namespace
 ]])
 
-Group.new('Normal', c.superwhite, c.gray0)
+Group.new('Normal', c.none, c.none)
+Group.new('LineNr', c.none, c.none)
+Group.new('NotifyBackground', c.superwhite, c.gray0)
 
 -- vim.defer_fn(function()
 --   loadfile(vim.api.nvim_get_runtime_file("lua/colorbuddy/plugins/init.lua", false)[1])()
