@@ -1,16 +1,14 @@
 return {
-  { "nvim-treesitter/nvim-treesitter" },
-  "nvim-treesitter/playground",
-  "nvim-treesitter/nvim-treesitter-textobjects",
-  "JoosepAlviste/nvim-ts-context-commentstring",
-  "nvim-treesitter/nvim-treesitter-context",
-
-  -- "vigoux/architext.nvim"
-  -- {
-  --     "mfussenegger/nvim-ts-hint-textobject",
-  --     config = function()
-  --       vim.cmd [[omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>]]
-  --       vim.cmd [[vnoremap <silent> m :lua require('tsht').nodes()<CR>]]
-  --     end,
-  --   }
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		branch = "main",
+		lazy = false,
+		config = function()
+			require("custom.treesitter").setup()
+		end,
+	},
+	-- {
+	-- 	"hiphish/rainbow-delimiters.nvim"
+	-- }
 }

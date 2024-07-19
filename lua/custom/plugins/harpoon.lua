@@ -1,25 +1,22 @@
 return {
-	{
-		"ThePrimeagen/harpoon",
-		event = "VeryLazy",
-		config = function()
-			local nmap = require("user.keymap").nmap
+	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
+	config = function()
+		local harpoon = require("harpoon")
+		harpoon:setup()
 
-			local harpoon = require "harpoon"
+		vim.keymap.set("n", "<leader>a", function()
+			harpoon:list():add()
+		end)
+		vim.keymap.set("n", "<C-e>", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end)
 
-			harpoon.setup {}
-
-			nmap { "<leader>a", require("harpoon.mark").add_file }
-			nmap { "<C-e>", require("harpoon.ui").toggle_quick_menu }
-
-			for i = 1, 5 do
-				nmap {
-					string.format("<space>%s", i),
-					function()
-						require("harpoon.ui").nav_file(i)
-					end,
-				}
-			end
-		end,
-	},
+		-- Set <space>1..<space>5 be my shortcuts to moving to the files
+		for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
+			vim.keymap.set("n", string.format("<space>%d", idx), function()
+				harpoon:list():select(idx)
+			end)
+		end
+	end,
 }

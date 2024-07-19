@@ -1,71 +1,23 @@
--- TODO:
---
--- use "simrat39/rust-tools.nvim"
--- use "ray-x/go.nvim"
--- use {
---   "ericpubu/lsp_codelens_extensions.nvim",
---   config = function()
---     require("codelens_extensions").setup()
---   end,
--- }
--- use {
---   "folke/lsp-trouble.nvim",
---   cmd = "Trouble",
---   config = function()
---     -- Can use P to toggle auto movement
---     require("trouble").setup {
---       auto_preview = false,
---       auto_fold = true,
---     }
---   end,
--- }
-
--- use {
---   "folke/noice.nvim",
---   event = "VimEnter",
---   config = function()
---     require("noice").setup()
---   end,
---   requires = {
---     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
---     "MunifTanjim/nui.nvim",
---     "rcarriga/nvim-notify",
---   },
--- }
-
 return {
-  {
-    "neovim/nvim-lspconfig",
-    cmd = "LspInfo",
-    event = { "VeryLazy" },
-    config = function()
-      require "user.lsp"
-    end,
-  },
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"folke/neodev.nvim",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"mfussenegger/nvim-lint",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    config = function()
-      require("mason-tool-installer").setup {
-        auto_update = true,
-        debounce_hours = 24,
-        ensure_installed = {
-          "black",
-          "isort",
-        },
-      }
-    end,
-  },
+			{ "j-hui/fidget.nvim", opts = {} },
 
-  "simrat39/inlay-hints.nvim",
-  { "j-hui/fidget.nvim", branch = "legacy" },
-  "folke/neodev.nvim",
-  "jose-elias-alvarez/nvim-lsp-ts-utils",
-  "scalameta/nvim-metals",
-  "b0o/schemastore.nvim",
+			-- Autoformatting
+			"stevearc/conform.nvim",
 
-  -- Formatting plugin
-  "stevearc/conform.nvim",
+			-- Schema information
+			"b0o/SchemaStore.nvim",
+		},
+		config = function()
+			require("custom.lsp")
+		end,
+	},
 }
