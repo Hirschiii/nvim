@@ -196,6 +196,20 @@ cmp.setup {
 		end
 	},
 
+	window = {
+		-- completion = {
+		-- 	border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+		-- 	winhighlight = 'Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+		-- },
+		-- documentation = {
+		-- 	border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+		-- 	winhighlight = 'Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+		-- },
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+
+	},
+
 	experimental = {
 		ghost_text = {
 			hl_group = "CmpGhostText",
