@@ -156,10 +156,11 @@ local servers_to_install = vim.tbl_filter(function(key)
 end, vim.tbl_keys(servers))
 
 require("mason").setup()
-local ensure_installed = { "markdownlint-cli2", "jsonls", "elixirls", "lua_ls" }
+local ensure_installed = { "jsonls", "elixirls", "lua_ls" }
 
-vim.list_extend(ensure_installed, servers_to_install)
+-- vim.list_extend(ensure_installed, servers_to_install)
 require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+
 
 for name, config in pairs(servers) do
 	if config == true then
@@ -217,32 +218,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				client.server_capabilities[k] = v
 			end
 		end
-	end,
-})
-
-
--- Automatic Linting
-require('lint').linters_by_ft = {
-	elixir = { "credo", }
-}
-
--- Autoformatting Setup
-require("conform").setup {
-	formatters_by_ft = {
-		lua = { "stylua" },
-		elixir = { "mix" },
-		markdown = { "prettierd", "prettier" }
-	},
-}
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function(args)
-		require("conform").format {
-			bufnr = args.buf,
-			lsp_fallback = true,
-			quiet = true,
-		}
-
-		require("lint").try_lint()
 	end,
 })
