@@ -1,9 +1,9 @@
-require("neodev").setup {
-	-- library = {
-	--   plugins = { "nvim-dap-ui" },
-	--   types = true,
-	-- },
-}
+-- require("neodev").setup {
+-- 	-- library = {
+-- 	--   plugins = { "nvim-dap-ui" },
+-- 	--   types = true,
+-- 	-- },
+-- }
 
 vim.diagnostic.config({
 	underline = true,
