@@ -1,7 +1,7 @@
 return {
 	{
 		"echasnovski/mini.nvim",
-		event = "VimEnter",
+		event = "VeryLazy",
 		config = function()
 			require("mini.ai").setup()
 			require("mini.surround").setup()
