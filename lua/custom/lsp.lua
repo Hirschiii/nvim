@@ -159,7 +159,7 @@ end, vim.tbl_keys(servers))
 require("mason").setup()
 local ensure_installed = { "jsonls", "elixirls", "lua_ls" }
 
--- vim.list_extend(ensure_installed, servers_to_install)
+vim.list_extend(ensure_installed, servers_to_install)
 require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
 for name, config in pairs(servers) do
