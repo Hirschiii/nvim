@@ -1,5 +1,7 @@
 -- local treesitter = require "nvim-treesitter"
 
+print("Tree is executed")
+
 local M = {}
 
 M.setup = function()

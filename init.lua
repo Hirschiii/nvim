@@ -36,3 +36,5 @@ require("lazy").setup({ import = "custom/plugins" }, {
 		lazy = true, -- should plugins be lazy-loaded?
 	},
 })
+
+require "user.autocommands"

@@ -1,20 +1,21 @@
 return {
-   -- {
-   -- 	"tjdevries/colorbuddy.nvim",
-   -- 	lazy = false,
-   -- 	priority = 100,
-   -- 	dependencies = {
-   -- 		{ "norcalli/nvim-colorizer.lua" },
-   -- 	},
-   -- 	config = function()
-   -- 		require "custom.colorsheme"
-   -- 	end,
-   -- },
+   {
+   	"tjdevries/colorbuddy.nvim",
+   	lazy = true,
+   	-- priority = 100,
+   	dependencies = {
+   		{ "norcalli/nvim-colorizer.lua" },
+   	},
+   	-- config = function()
+   	-- 	require "custom.colorsheme"
+   	-- end,
+   },
    {
       "catppuccin/nvim",
       lazy = false,
       name = "catppuccin",
       priority = 100,
+	  enabled = false,
       opts = {
          flavour = "mocha", -- latte, frappe, macchiato, mocha
          background = { -- :h background

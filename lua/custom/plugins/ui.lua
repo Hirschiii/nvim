@@ -1,6 +1,7 @@
 return {
    {
       "rcarriga/nvim-notify",
+	  cond = false,
       keys = {
          {
             "<leader>un",
@@ -26,6 +27,7 @@ return {
    },
    {
       "folke/noice.nvim",
+	  cond = false,
       event = "VeryLazy",
       opts = {
          lsp = {
