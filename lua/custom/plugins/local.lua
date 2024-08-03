@@ -1,6 +1,6 @@
 return {
-   -- dir = "~/plugins/dyncs.nvim/",
-   url = "git@codeberg.org:zenlima/dyncs.nvim.git",
+   dir = "~/plugins/dyncs.nvim/",
+   -- url = "git@codeberg.org:zenlima/dyncs.nvim.git",
    name = "dyncs",
    lazy = false,
    priority = 1000,

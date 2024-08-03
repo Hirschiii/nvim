@@ -15,22 +15,27 @@ return {
          { "<bs>", desc = "Decrement Selection", mode = "x" },
       },
       opts = {
-            highlight = {
-               enable = true,
+         highlight = {
+            enable = true,
+            -- disable = { "latex" },
+            -- additional_vim_regex_highlighting = { "latex", "markdown" },
+         },
+         indent = {
+            enable = true,
+         },
+         incremental_selection = {
+            enable = true,
+            keymaps = {
+               init_selection = "<C-space>",
+               node_incremental = "<C-space>",
+               scope_incremental = false,
+               node_decremental = "<bs>",
             },
-            indent = {
-               enable = true,
-            },
-            incremental_selection = {
-               enable = true,
-               keymaps = {
-                  init_selection = "<C-space>",
-                  node_incremental = "<C-space>",
-                  scope_incremental = false,
-                  node_decremental = "<bs>",
-               },
-            },
-         ensure_install = { "core", "elixir", "heex", "eex" },
+         },
+         ensure_install = { "core", "elixir", "heex", "eex", "markdown", "markdown_inline", "latex" },
+         markdown = {
+            enable = true,
+         },
          textobjects = {
             move = {
                enable = true,

@@ -145,6 +145,22 @@ local servers = {
    marksman = {
       cmd = { os.getenv "HOME" .. "/.local/share/nvim/mason/bin/marksman" },
    },
+   ltex = {
+      cmd = { os.getenv "HOME" .. "/.local/share/nvim/mason/bin/ltex-ls" },
+      settings = {
+         ltex = {
+            enabled = { "latex", "tex", "bib", "markdown" },
+            -- language = "de-DE",
+            language = "auto",
+            diagnosticSeverity = "information",
+            sentenceCacheSize = 2000,
+            additionalRules = {
+               enablePickyRules = true,
+               motherTongue = "de",
+            },
+         },
+      },
+   },
 
    -- clangd = {
    -- 	-- TODO: Could include cmd, but not sure those were all relevant flags.
@@ -173,11 +189,10 @@ for name, config in pairs(servers) do
    if config == true then
       config = {}
    end
-   config = vim.tbl_deep_extend("force", {capabilities = default_capabilities}, config)
+   config = vim.tbl_deep_extend("force", { capabilities = default_capabilities }, config)
 
    lspconfig[name].setup(config)
 end
-
 
 vim.api.nvim_create_autocmd("LspAttach", {
    callback = function(args)
@@ -205,15 +220,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
 
       -- Override server capabilities
-      if settings.server_capabilities then
-         for k, v in pairs(settings.server_capabilities) do
-            if v == vim.NIL then
-               ---@diagnostic disable-next-line: cast-local-type
-               v = nil
-            end
-
-            client.server_capabilities[k] = v
-         end
-      end
+      -- if settings.server_capabilities then
+      --    for k, v in pairs(settings.server_capabilities) do
+      --       if v == vim.NIL then
+      --          ---@diagnostic disable-next-line: cast-local-type
+      --          v = nil
+      --       end
+      --
+      --       client.server_capabilities[k] = v
+      --    end
+      -- end
    end,
 })
