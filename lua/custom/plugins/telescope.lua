@@ -85,7 +85,7 @@ return {
                require("telescope.builtin").find_files { cwd = vim.fs.joinpath(vim.fn.stdpath "data", "lazy") }
             end,
             mode = "n",
-			desc = "Find plugin files"
+            desc = "Find plugin files",
          },
          {
             "<space>fc",
@@ -93,9 +93,10 @@ return {
                require("telescope.builtin").find_files { cwd = vim.fn.stdpath "config" }
             end,
             mode = "n",
-			desc = "Find Configuration files for  nvim"
+            desc = "Find Configuration files for  nvim",
          },
       },
+      cmd = { "Telescope" },
       config = function()
          local data = assert(vim.fn.stdpath "data") --[[@as string]]
          require("telescope").load_extension "fzf"
