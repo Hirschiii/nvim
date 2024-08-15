@@ -52,7 +52,7 @@ end
 local lspconfig = require "lspconfig"
 
 local servers = {
-   -- bashls = true,
+   bashls = true,
    -- gopls = {
    -- 	settings = {
    -- 		gopls = {

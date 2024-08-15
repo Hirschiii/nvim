@@ -69,12 +69,14 @@ M = {
    }, {
       t { "---", "title: '" },
       i(1, "note_title"),
+      t { "'", "subtitle: '" },
+      i(2, "note_title"),
       t { "'", "author: Niklas von Hirschfeld" },
       t { "", "date: " },
       f(date, {}),
       t { "", "tags:", "- " },
-      i(2, ""),
-      t { "", "enableToc: true", "publish: false", "---", "" },
+      i(3, ""),
+      t { "", "toc: true", "publish: false", "---", "" },
       i(0),
    }),
    s(
@@ -93,18 +95,18 @@ M = {
       namr = "Latex Begin Aligned",
       dscr = "The LaTex aligned block",
    }, {
-      t { "$$", "\\begin{aligned}", "" },
+      t { "$$", "\\startaligne", "" },
       i(0, ""),
-      t { "", "\\end{aligned}", "$$" },
+      t { "", "\\stopaligne", "$$" },
    }),
    s({
       trig = "pmatrix",
       namr = "Latex Begin Pmatrix",
       dscr = "The LaTex Pmatrix block",
    }, {
-      t { "\\begin{pmatrix}", "" },
+      t { "\\startpmatrix", "" },
       i(0, ""),
-      t { "", "\\end{pmatrix}" },
+      t { "", "\\stoppmatrix" },
    }),
    s({
       trig = "elixir",
