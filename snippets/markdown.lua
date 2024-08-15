@@ -69,12 +69,14 @@ M = {
    }, {
       t { "---", "title: '" },
       i(1, "note_title"),
+      t { "'", "subtitle: '" },
+      i(2, "subtitle"),
       t { "'", "author: Niklas von Hirschfeld" },
       t { "", "date: " },
       f(date, {}),
       t { "", "tags:", "- " },
-      i(2, ""),
-      t { "", "enableToc: true", "publish: false", "---", "" },
+      i(3, ""),
+      t { "", "toc: true", "publish: false", "---", "" },
       i(0),
    }),
    s(

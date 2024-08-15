@@ -52,7 +52,7 @@ end
 local lspconfig = require "lspconfig"
 
 local servers = {
-   -- bashls = true,
+   bashls = true,
    -- gopls = {
    -- 	settings = {
    -- 		gopls = {
@@ -145,22 +145,22 @@ local servers = {
    marksman = {
       cmd = { os.getenv "HOME" .. "/.local/share/nvim/mason/bin/marksman" },
    },
-   ltex = {
-      cmd = { os.getenv "HOME" .. "/.local/share/nvim/mason/bin/ltex-ls" },
-      settings = {
-         ltex = {
-            enabled = { "latex", "tex", "bib", "markdown" },
-            -- language = "de-DE",
-            language = "auto",
-            diagnosticSeverity = "information",
-            sentenceCacheSize = 2000,
-            additionalRules = {
-               enablePickyRules = true,
-               motherTongue = "de",
-            },
-         },
-      },
-   },
+   -- ltex = {
+   --    cmd = { os.getenv "HOME" .. "/.local/share/nvim/mason/bin/ltex-ls" },
+   --    settings = {
+   --       ltex = {
+   --          enabled = { "latex", "tex", "bib", "markdown" },
+   --          -- language = "de-DE",
+   --          language = "auto",
+   --          diagnosticSeverity = "information",
+   --          sentenceCacheSize = 2000,
+   --          additionalRules = {
+   --             enablePickyRules = true,
+   --             motherTongue = "de",
+   --          },
+   --       },
+   --    },
+   -- },
 
    -- clangd = {
    -- 	-- TODO: Could include cmd, but not sure those were all relevant flags.
