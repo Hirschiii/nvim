@@ -70,7 +70,11 @@ M = {
       t { "---", "title: '" },
       i(1, "note_title"),
       t { "'", "subtitle: '" },
+<<<<<<< HEAD
       i(2, "subtitle"),
+=======
+      i(2, "note_title"),
+>>>>>>> 7d8aad935397374b3ecfeb736d0e330b8b62ad36
       t { "'", "author: Niklas von Hirschfeld" },
       t { "", "date: " },
       f(date, {}),
