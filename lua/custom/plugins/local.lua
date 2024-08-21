@@ -1,6 +1,6 @@
 return {
-   -- dir = "~/plugins/dyncs.nvim/",
-   url = "git@codeberg.org:zenlima/dyncs.nvim.git",
+   dir = "~/plugins/dyncs.nvim/",
+   -- url = "git@codeberg.org:zenlima/dyncs.nvim.git",
    name = "dyncs",
    lazy = false,
    priority = 1000,
@@ -10,6 +10,7 @@ return {
       "tjdevries/colorbuddy.nvim",
    },
    opts = {
+      debug = nil,
       -- colors = {
       -- 	text = "#ebdbb2",
       -- 	attention = "#fb4934",
