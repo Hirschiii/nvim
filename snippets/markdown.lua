@@ -29,37 +29,27 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local autosnippet = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 
-local function create_snippet(entry)
-   return s(
-      { trig = entry, namr = entry:upper() .. " block" },
-      fmta(
-         [[
-             [!<>]
-             <>
-            ]],
-         { i(1, entry:upper()), i(0) }
-      )
-   )
-end
-
-local entries = {
-   "note",
-   "tip",
-   "important",
-   "warning",
-   "caution",
-   "abstract",
-   "todo",
-   "success",
-   "question",
-   "failure",
-   "danger",
-   "bug",
-   "example",
-   "quote",
-}
-
-local callouts = { vim.tbl_map(create_snippet, entries) }
+-- local function create_snippet(entry)
+--    return s({
+--       trig = entry,
+--       namr = entry .. " Block",
+--    }, {
+--       t { "::: " .. entry, "" },
+--       i(1, ""),
+--       t { "", ":::", "" },
+--       i(0, ""),
+--    })
+-- end
+--
+-- local entries = {
+--    "example",
+--    "alert",
+--    "block",
+--    "leftbar",
+--    "inmargin",
+-- }
+--
+-- local callouts = { vim.tbl_map(create_snippet, entries) }
 
 M = {
    s({
@@ -74,7 +64,7 @@ M = {
       t { "'", "author: Niklas von Hirschfeld" },
       t { "", "date: " },
       f(date, {}),
-      t { "", "toc: true", "publish: false", "---", "" },
+      t { "", "toc: true", "bib: false", "chapter: false", "publish: false", "environments: []", "---", "" },
       i(0),
    }),
    s({
@@ -89,7 +79,7 @@ M = {
       t { "'", "author: Niklas von Hirschfeld" },
       t { "", "date: " },
       f(date, {}),
-      t { "", "toc: true", "publish: false", "---", "" },
+      t { "", "toc: true", "publish: false", "titlepage: default", "---", "" },
       i(0),
    }),
    s(
@@ -138,8 +128,64 @@ M = {
          { i(1), i(2), i(0) }
       )
    ),
+   s({
+      trig = "example",
+      namr = "example Block",
+   }, {
+      t { "::: " .. "example", "" },
+      i(1, ""),
+      t { "", ":::", "" },
+      i(0, ""),
+   }),
+   s({
+      trig = "alert",
+      namr = "alert Block",
+   }, {
+      t { "::: " .. "alert", "" },
+      i(1, ""),
+      t { "", ":::", "" },
+      i(0, ""),
+   }),
+   s({
+      trig = "leftbar",
+      namr = "leftbar Block",
+   }, {
+      t { "::: " .. "leftbar", "" },
+      i(1, ""),
+      t { "", ":::", "" },
+      i(0, ""),
+   }),
+   s({
+      trig = "block",
+      namr = "block Block",
+   }, {
+      t { "::: " .. "block", "" },
+      i(1, ""),
+      t { "", ":::", "" },
+      i(0, ""),
+   }),
+   s({
+      trig = "inmargin",
+      namr = "inmargin Block",
+   }, {
+      t { "::: " .. "inmargin", "" },
+      i(1, ""),
+      t { "", ":::", "" },
+      i(0, ""),
+   }),
+   s({
+      trig = "div",
+      namr = "block Block",
+   }, {
+      t { "::: " },
+      i(1, "name"),
+      t { "", "" },
+      i(2, ""),
+      t { "", ":::", "" },
+      i(0, ""),
+   }),
 }
 
-M = vim.tbl_deep_extend("keep", M, callouts)
+-- M = vim.tbl_deep_extend("keep", M, callouts)
 
 return M

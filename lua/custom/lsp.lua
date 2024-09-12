@@ -73,6 +73,9 @@ local servers = {
          semanticTokensProvider = true,
       },
    },
+   -- java_language_server = {
+   --    cmd = { os.getenv "HOME" .. "/.local/share/nvim/mason/bin/java-language-server" },
+   -- },
    -- rust_analyzer = true,
    -- svelte = true,
    -- templ = true,

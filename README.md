@@ -27,3 +27,18 @@
 | "n"  | "<space>cr" | vim.lsp.buf.rename          | Benennt alle referencen um                   |
 | "n"  | "<space>ca" | vim.lsp.buf.code_action     | Listet mögliche Code Actions auf             |
 | "n"  | "<space>v"  | vim.diagnostics.open_float  | Oeffnet die kompletten diagnostics der Zeile |
+
+# Snippet idee
+
+```
+::: dynamic
+
+:::
+```
+
+zu:
+
+```
+\startdynamic
+\stopdyncamic
+```
