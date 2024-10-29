@@ -32,3 +32,18 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Open a fold with l
+vim.opt.foldopen = "hor"
+-- Close a fold with h when on the beginning of the line
+vim.keymap.set("n", "h", function()
+   local onIndentOrFirstNonBlank = vim.fn.virtcol "." <= vim.fn.indent "." + 1
+   local shouldCloseFold = vim.tbl_contains(vim.opt_local.foldopen:get(), "hor")
+   if onIndentOrFirstNonBlank and shouldCloseFold then
+      local wasFolded = pcall(vim.cmd.normal, "zc")
+      if wasFolded then
+         return
+      end
+   end
+   vim.cmd.normal { "h", bang = true }
+end, { desc = "h (+ close fold at BoL)" })

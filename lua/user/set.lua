@@ -1,6 +1,9 @@
+---@diagnostic disable: assign-type-mismatch
 local opt = vim.opt
 
 opt.pumheight = 20
+
+opt.foldmethod = "manual"
 
 opt.nu = true
 opt.relativenumber = true

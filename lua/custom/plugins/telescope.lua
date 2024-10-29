@@ -4,6 +4,17 @@ return {
       lazy = true,
       dependencies = {
          {
+            "glepnir/template.nvim",
+            cmd = { "Template", "TemProject" },
+            config = function()
+               require("template").setup {
+                  -- config in there
+                  temp_dir = "~/.config/nvim/templates",
+                  author = "Niklas von Hirschfeld",
+               }
+            end,
+         },
+         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
             -- config = function()
@@ -41,10 +52,15 @@ return {
          {
             "<space>ft",
             function()
-               require("telescope.builtin").git_files()
+               vim.keymap.set("n", "<Leader>ft", function()
+                  -- require("telescope.builtin").help_template()
+                  -- require("telescope").extensions.find_template { type = "insert" }
+                  require("telescope").extensions.find_template.find_template { type = "insert" }
+                  -- vim.cmd "Telescope find_template type=insert"
+               end, { remap = true })
             end,
             mode = "n",
-            desc = "Find Git Files",
+            desc = "Find Templates",
          },
          {
             "<space>fh",
@@ -102,10 +118,11 @@ return {
          require("telescope").load_extension "fzf"
          require("telescope").load_extension "smart_history"
          require("telescope").load_extension "ui-select"
+         require("telescope").load_extension "find_template"
          require("telescope").setup {
             extensions = {
                wrap_results = true,
-
+               find_template = {},
                fzf = {},
                history = {
                   path = vim.fs.joinpath(data, "telescope_history"),
