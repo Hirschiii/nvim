@@ -123,6 +123,17 @@ M = {
       i(2, ""),
       t { "", "\\eTABLE", "\\stopplacetable" },
    }),
+   s({
+      trig = "placeformula",
+   }, {
+      t { "\\startplaceformula[" },
+      i(1, "reference"),
+      t { "]", "" },
+      t { "\\startformula", "" },
+      i(2, ""),
+      t { "", "\\stopformula", "" },
+      t { "\\stopplaceformula" },
+   }),
 }
 
 -- M = vim.tbl_deep_extend("keep", M, callouts)
