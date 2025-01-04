@@ -33,7 +33,8 @@ return {
          formatters_by_ft = {
             lua = { "stylua" },
             elixir = { "mix" },
-            -- markdown = { "prettierd", "prettier" },
+            markdown = { "prettierd", "prettier" },
+            xml = { "" },
          },
          formatters = {
             injected = { options = { ignore_errors = true } },
