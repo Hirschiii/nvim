@@ -134,6 +134,13 @@ M = {
       t { "", "\\stopformula", "" },
       t { "\\stopplaceformula" },
    }),
+
+	s({
+		trig = "bf",
+	},{
+			t{"{\\bf "}, i(1, ""), t{"}"}
+		}
+	)
 }
 
 -- M = vim.tbl_deep_extend("keep", M, callouts)
