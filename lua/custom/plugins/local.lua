@@ -5,7 +5,7 @@ return {
    lazy = false,
    priority = 1000,
    cond = true,
-   -- enabled = false,
+   enabled = false,
    dependencies = {
       "tjdevries/colorbuddy.nvim",
    },
