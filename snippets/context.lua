@@ -134,13 +134,70 @@ M = {
       t { "", "\\stopformula", "" },
       t { "\\stopplaceformula" },
    }),
+   s({
+      trig = "tipp",
+      namr = "Start and Stop",
+   }, {
+      t { "\\startframedtipp" },
+      t { "", "" },
+      i(1),
+      t { "", "\\stopframedtipp", "" },
+      i(0),
+      -- f(copy, 1), -- Does the same
+   }),
+   s({
+      trig = "warning",
+      namr = "Start and Stop",
+   }, {
+      t { "\\startframedwarning" },
+      t { "", "" },
+      i(1),
+      t { "", "\\stopframedwarning", "" },
+      i(0),
+      -- f(copy, 1), -- Does the same
+   }),
+   s({
+      trig = "example",
+      namr = "Start and Stop",
+   }, {
+      t { "\\startframedexample" },
+      t { "", "" },
+      i(1),
+      t { "", "\\stopframedexample", "" },
+      i(0),
+      -- f(copy, 1), -- Does the same
+   }),
+   s({
+      trig = "task",
+      namr = "Start and Stop",
+   }, {
+      t { "\\startframedtask" },
+      t { "", "" },
+      i(1),
+      t { "", "\\stopframedtask", "" },
+      i(0),
+      -- f(copy, 1), -- Does the same
+   }),
+   s({
+      trig = "definition",
+      namr = "Start and Stop",
+   }, {
+      t { "\\startframeddefinition[title={" },
+      i(1, "Titel"),
+      t { "}]", "" },
+      i(2),
+      t { "", "\\stopframeddefinition", "" },
+      i(0),
+      -- f(copy, 1), -- Does the same
+   }),
 
-	s({
-		trig = "bf",
-	},{
-			t{"{\\bf "}, i(1, ""), t{"}"}
-		}
-	)
+   s({
+      trig = "bf",
+   }, {
+      t { "{\\bf " },
+      i(1, ""),
+      t { "}" },
+   }),
 }
 
 -- M = vim.tbl_deep_extend("keep", M, callouts)
