@@ -190,6 +190,14 @@ M = {
       i(0),
       -- f(copy, 1), -- Does the same
    }),
+   s({
+      trig = "sidenote",
+   }, {
+      t { "{\\sidenote{" },
+      i(1, ""),
+      t { "}" },
+      i(0),
+   }),
 
    s({
       trig = "bf",
