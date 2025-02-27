@@ -54,6 +54,7 @@ local lspconfig = require "lspconfig"
 local servers = {
    astro = true,
    cssls = true,
+   clangd = true,
    html = true,
    emmet_language_server = true,
    bashls = true,
