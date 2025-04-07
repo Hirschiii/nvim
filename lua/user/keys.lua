@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
 -- This is going to get me cancelled
--- vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "jf", "<Esc>")
 -- inoremap("jf", "<Esc>", { noremap = true })
 
 vim.keymap.set("n", "Q", "<nop>")
