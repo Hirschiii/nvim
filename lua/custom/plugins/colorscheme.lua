@@ -1,16 +1,5 @@
 return {
    {
-   	"tjdevries/colorbuddy.nvim",
-   	lazy = true,
-   	-- priority = 100,
-   	dependencies = {
-   		{ "norcalli/nvim-colorizer.lua" },
-   	},
-   	-- config = function()
-   	-- 	require "custom.colorsheme"
-   	-- end,
-   },
-   {
       "catppuccin/nvim",
       lazy = false,
       name = "catppuccin",
