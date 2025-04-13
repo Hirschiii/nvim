@@ -70,60 +70,51 @@ return {
 
          local servers = {
             bashls = true,
-            gopls = {
-               manual_install = true,
-               settings = {
-                  gopls = {
-                     hints = {
-                        assignVariableTypes = true,
-                        compositeLiteralFields = true,
-                        compositeLiteralTypes = true,
-                        constantValues = true,
-                        functionTypeParameters = true,
-                        parameterNames = true,
-                        rangeVariableTypes = true,
-                     },
-                  },
-               },
-            },
             lua_ls = {
                server_capabilities = {
                   semanticTokensProvider = vim.NIL,
                },
             },
-            rust_analyzer = true,
-            svelte = true,
-            templ = true,
-            taplo = true,
-            intelephense = true,
 
-            pyright = true,
-            ruff = { manual_install = true },
-            -- mojo = { manual_install = true },
-
-            -- Enabled biome formatting, turn off all the other ones generally
-            biome = true,
-            -- ts_ls = {
-            --   root_dir = require("lspconfig").util.root_pattern "package.json",
-            --   single_file = false,
-            --   server_capabilities = {
-            --     documentFormattingProvider = false,
-            --   },
-            -- },
-            vtsls = {
+            lexical = {
+               root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
                server_capabilities = {
-                  documentFormattingProvider = false,
+                  completionProvider = vim.NIL,
+                  definitionProvider = true,
                },
             },
-            -- denols = true,
-            jsonls = {
-               server_capabilities = {
-                  documentFormattingProvider = false,
-               },
+
+            texlab = {
+               filetypes = { "tex", "plaintex", "context", "latex" },
                settings = {
-                  json = {
-                     schemas = require("schemastore").json.schemas(),
-                     validate = { enable = true },
+                  texlab = {
+                     build = {
+                        executable = "context",
+                        args = { "--synctex", "%f" },
+
+                        -- executable = "pdflatex",
+                        -- args = { "--synctex=1", "%f" },
+                        onSave = false,
+                        forwardSearchAfter = false,
+                     },
+                     forwardSearch = {
+                        -- executable = "zathura",
+                        -- args = { "--synctex-forward", "%l:1:%f", "%p" },
+                        -- executable = "evince-synctex",
+                        -- args = { "sync", "%p", '"/home/niklas/.local/share/nvim/mason/bin/texlab -i %f -l %l"', "%l" },
+                        executable = "zathura",
+                        args = { "--synctex-forward", "%l:1:%f", "%p" },
+                        onSave = true,
+                     },
+                     auxDirectory = ".",
+                     bibtexFormatter = "texlab",
+                     chktex = {
+                        onEdit = false,
+                        onOpenAndSave = true,
+                     },
+                     diagnosticsDelay = 300,
+                     formatterLineLength = 80,
+                     latexFormatter = "texlab",
                   },
                },
             },
@@ -134,39 +125,17 @@ return {
             --   },
             -- },
 
-            yamlls = {
-               settings = {
-                  yaml = {
-                     schemaStore = {
-                        enable = false,
-                        url = "",
-                     },
-                     -- schemas = require("schemastore").yaml.schemas(),
-                  },
-               },
-            },
-
-            ols = {},
-            racket_langserver = { manual_install = true },
-            roc_ls = { manual_install = true },
-
-            -- ocamllsp = {
-            --   manual_install = true,
-            --   cmd = { "dune", "tools", "exec", "ocamllsp" },
-            --   -- cmd = { "dune", "exec", "ocamllsp" },
-            --   settings = {
-            --     codelens = { enable = true },
-            --     inlayHints = { enable = true },
-            --     syntaxDocumentation = { enable = true },
-            --   },
-            --   server_capabilities = { semanticTokensProvider = false },
-            --
-            --   -- TODO: Check if i still need the filtypes stuff i had before
+            -- yamlls = {
+            --    settings = {
+            --       yaml = {
+            --          schemaStore = {
+            --             enable = false,
+            --             url = "",
+            --          },
+            --          -- schemas = require("schemastore").yaml.schemas(),
+            --       },
+            --    },
             -- },
-
-            gleam = {
-               manual_install = true,
-            },
 
             -- elixirls = {
             --   cmd = { "/home/tjdevries/.local/share/nvim/mason/bin/elixir-ls" },
@@ -178,47 +147,29 @@ return {
             --   -- },
             -- },
 
-            lexical = {
-               cmd = { "/home/tjdevries/.local/share/nvim/mason/bin/lexical", "server" },
-               root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
-               server_capabilities = {
-                  completionProvider = vim.NIL,
-                  definitionProvider = true,
-               },
-            },
-
-            clangd = {
-               -- cmd = { "clangd", unpack(require("custom.clangd").flags) },
-               -- TODO: Could include cmd, but not sure those were all relevant flags.
-               --    looks like something i would have added while i was floundering
-               init_options = { clangdFileStatus = true },
-
-               filetypes = { "c" },
-            },
-
-            tailwindcss = {
-               init_options = {
-                  userLanguages = {
-                     elixir = "phoenix-heex",
-                     eruby = "erb",
-                     heex = "phoenix-heex",
-                  },
-               },
-               filetypes = extend("tailwindcss", "filetypes", { "ocaml.mlx" }),
-               settings = {
-                  tailwindCSS = {
-                     experimental = {
-                        classRegex = {
-                           [[class: "([^"]*)]],
-                           [[className="([^"]*)]],
-                        },
-                     },
-                     includeLanguages = extend("tailwindcss", "settings.tailwindCSS.includeLanguages", {
-                        ["ocaml.mlx"] = "html",
-                     }),
-                  },
-               },
-            },
+            -- tailwindcss = {
+            --    init_options = {
+            --       userLanguages = {
+            --          elixir = "phoenix-heex",
+            --          eruby = "erb",
+            --          heex = "phoenix-heex",
+            --       },
+            --    },
+            --    filetypes = extend("tailwindcss", "filetypes", { "ocaml.mlx" }),
+            --    settings = {
+            --       tailwindCSS = {
+            --          experimental = {
+            --             classRegex = {
+            --                [[class: "([^"]*)]],
+            --                [[className="([^"]*)]],
+            --             },
+            --          },
+            --          includeLanguages = extend("tailwindcss", "settings.tailwindCSS.includeLanguages", {
+            --             ["ocaml.mlx"] = "html",
+            --          }),
+            --       },
+            --    },
+            -- },
          }
 
          -- require("ocaml").setup()
@@ -236,7 +187,6 @@ return {
          local ensure_installed = {
             "stylua",
             "lua_ls",
-            "delve",
             -- "tailwind-language-server",
          }
 

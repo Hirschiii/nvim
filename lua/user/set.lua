@@ -31,3 +31,9 @@ vim.opt.splitright = true
 
 vim.opt.signcolumn = "yes"
 vim.opt.shada = { "'10", "<0", "s10", "h" }
+
+vim.opt.wrap = false
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append "@-@"
