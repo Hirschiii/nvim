@@ -11,6 +11,7 @@ local function setup()
             vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
             vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
          end,
+         cmd = "/home/niklas/.local/share/nvim/mason/bin/elixir-ls",
       },
       projectionist = { enable = false },
    }

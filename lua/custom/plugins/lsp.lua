@@ -15,6 +15,13 @@ return {
                },
             },
          },
+         {
+            "nvimdev/lspsaga.nvim",
+            dependencies = {
+               "nvim-treesitter/nvim-treesitter", -- optional
+               "nvim-tree/nvim-web-devicons",
+            },
+         },
          { "Bilal2453/luvit-meta", lazy = true },
          "williamboman/mason.nvim",
          "williamboman/mason-lspconfig.nvim",
@@ -76,13 +83,7 @@ return {
                },
             },
 
-            lexical = {
-               root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
-               server_capabilities = {
-                  completionProvider = vim.NIL,
-                  definitionProvider = true,
-               },
-            },
+            kotlin_language_server = true,
 
             texlab = {
                filetypes = { "tex", "plaintex", "context", "latex" },
@@ -118,6 +119,7 @@ return {
                   },
                },
             },
+            rust_analyzer = true,
 
             -- cssls = {
             --   server_capabilities = {
@@ -136,16 +138,29 @@ return {
             --       },
             --    },
             -- },
+            --
+            lexical = {
+               root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
+               cmd = { "/home/niklas/.local/share/nvim/mason/bin/lexical" },
+               server_capabilities = {
+                  completionProvider = vim.NIL,
+                  definitionProvider = true,
+                  documentFormattingProvider = false,
+               },
+            },
 
-            -- elixirls = {
-            --   cmd = { "/home/tjdevries/.local/share/nvim/mason/bin/elixir-ls" },
-            --   root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
-            --   -- server_capabilities = {
-            --   --   -- completionProvider = true,
-            --   --   definitionProvider = true,
-            --   --   documentFormattingProvider = false,
-            --   -- },
-            -- },
+            elixirls = {
+               cmd = { "/home/niklas/.local/share/nvim/mason/bin/elixir-ls" },
+               root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
+               server_capabilities = {
+                  -- completionProvider = {
+                  --    resolveProvider = true,
+                  --    triggerCharacters = { ".", ":" },
+                  -- },
+                  definitionProvider = true,
+                  documentFormattingProvider = true,
+               },
+            },
 
             -- tailwindcss = {
             --    init_options = {
@@ -225,11 +240,16 @@ return {
                vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0 })
                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
                vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-               vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+               -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+               vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 
                vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
                vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
                vim.keymap.set("n", "<space>wd", builtin.lsp_document_symbols, { buffer = 0 })
+               vim.keymap.set("n", "<space>vd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+               -- vim.keymap.set("n", "<leader>d", function()
+               --    vim.diagnostic.open_float(nil, { focus = false })
+               -- end, { desc = "Zeige Diagnose in Popup" })
 
                local filetype = vim.bo[bufnr].filetype
                if disable_semantic_tokens[filetype] then
@@ -257,14 +277,20 @@ return {
 
          vim.keymap.set("", "<leader>l", function()
             local config = vim.diagnostic.config() or {}
-            if config.virtual_text then
-               vim.diagnostic.config { virtual_text = false, virtual_lines = true }
+            if config.virtual_lines then
+               vim.diagnostic.config { virtual_lines = false }
             else
-               vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+               vim.diagnostic.config { virtual_lines = true }
             end
          end, { desc = "Toggle lsp_lines" })
 
-         require("custom.elixir").setup()
+         -- require("custom.elixir").setup()
+
+         require("lspsaga").setup {
+            lightbulb = {
+               virtual_text = false,
+            },
+         }
       end,
    },
 }

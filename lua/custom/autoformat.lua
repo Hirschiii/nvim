@@ -18,6 +18,17 @@ local setup = function()
          blade = { "blade-formatter" },
          ocaml = { "ml-format" },
          ocaml_mlx = { "ocamlformat_mlx" },
+         markdown = { "prettier" },
+      },
+   }
+
+   conform.formatters.prettier = {
+      options = {
+         command = { "/home/niklas/.local/share/nvim/mason/bin/prettier" },
+         ignore_errors = false,
+         lang_to_formatters = {
+            sql = { "sleek" },
+         },
       },
    }
 

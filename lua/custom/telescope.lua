@@ -40,12 +40,20 @@ vim.keymap.set("n", "<leader>fa", function()
    builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath "data", "lazy") }
 end)
 
+vim.keymap.set("n", "<leader>fs", function()
+   builtin.find_files { cwd = "app/src/main" }
+end)
+
 vim.keymap.set("n", "<leader>en", function()
    builtin.find_files { cwd = vim.fn.stdpath "config" }
 end)
 
 vim.keymap.set("n", "<leader>eo", function()
    builtin.find_files { cwd = "~/.config/nvim-backup/" }
+end)
+
+vim.keymap.set("n", "<leader>ew", function()
+   builtin.find_files { cwd = "~/vimwiki/" }
 end)
 
 vim.keymap.set("n", "<leader>fp", function()
