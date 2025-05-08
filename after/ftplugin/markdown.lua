@@ -26,6 +26,8 @@ if require("zk.util").notebook_root(vim.fn.expand "%:p") ~= nil then
       opts
    )
 
+   map("n", "<leader>zil", "<Cmd>ZkInsertLink<CR>", opts)
+
    -- Open notes linking to the current buffer.
    map("n", "<leader>zb", "<Cmd>ZkBacklinks<CR>", opts)
    -- Alternative for backlinks using pure LSP and showing the source context.

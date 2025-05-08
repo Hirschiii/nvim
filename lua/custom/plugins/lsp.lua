@@ -36,7 +36,7 @@ return {
          "stevearc/conform.nvim",
 
          -- Schema information
-         "b0o/SchemaStore.nvim",
+         -- "b0o/SchemaStore.nvim",
          -- { dir = "~/plugins/ocaml.nvim" },
       },
       config = function()
@@ -121,6 +121,10 @@ return {
             },
             rust_analyzer = true,
 
+            emmet_language_server = {
+               filetypes = { "heex" },
+            },
+
             -- cssls = {
             --   server_capabilities = {
             --     documentFormattingProvider = false,
@@ -142,25 +146,25 @@ return {
             lexical = {
                root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
                cmd = { "/home/niklas/.local/share/nvim/mason/bin/lexical" },
-               server_capabilities = {
-                  completionProvider = vim.NIL,
-                  definitionProvider = true,
-                  documentFormattingProvider = false,
-               },
+               -- server_capabilities = {
+               -- completionProvider = vim.NIL,
+               -- definitionProvider = true,
+               -- documentFormattingProvider = false,
+               -- },
             },
 
-            elixirls = {
-               cmd = { "/home/niklas/.local/share/nvim/mason/bin/elixir-ls" },
-               root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
-               server_capabilities = {
-                  -- completionProvider = {
-                  --    resolveProvider = true,
-                  --    triggerCharacters = { ".", ":" },
-                  -- },
-                  definitionProvider = true,
-                  documentFormattingProvider = true,
-               },
-            },
+            -- elixirls = {
+            --    cmd = { "/home/niklas/.local/share/nvim/mason/bin/elixir-ls" },
+            --    root_dir = require("lspconfig.util").root_pattern { "mix.exs" },
+            --    server_capabilities = {
+            --       -- completionProvider = {
+            --       --    resolveProvider = true,
+            --       --    triggerCharacters = { ".", ":" },
+            --       -- },
+            --       definitionProvider = vim.NIL,
+            --       documentFormattingProvider = true,
+            --    },
+            -- },
 
             -- tailwindcss = {
             --    init_options = {
@@ -273,7 +277,7 @@ return {
          require("custom.autoformat").setup()
 
          require("lsp_lines").setup()
-         vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+         vim.diagnostic.config { virtual_text = false, virtual_lines = false }
 
          vim.keymap.set("", "<leader>l", function()
             local config = vim.diagnostic.config() or {}
@@ -288,6 +292,7 @@ return {
 
          require("lspsaga").setup {
             lightbulb = {
+               enable = false,
                virtual_text = false,
             },
          }
