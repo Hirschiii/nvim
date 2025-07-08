@@ -19,6 +19,8 @@ local setup = function()
          ocaml = { "ml-format" },
          ocaml_mlx = { "ocamlformat_mlx" },
          markdown = { "prettier" },
+         html = { "htmlbeautifier" },
+         svg = { "htmlbeautifier" },
       },
    }
 

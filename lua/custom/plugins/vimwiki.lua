@@ -3,6 +3,7 @@ return {
       "vimwiki/vimwiki",
       -- The event that triggers the plugin
       event = "BufEnter *.md",
+      cond = false,
       -- The keys that trigger the plugin
       keys = { "<leader>ww", "<leader>wt" },
       init = function()

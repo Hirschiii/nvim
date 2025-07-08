@@ -13,6 +13,11 @@ M.setup = function()
          -- "elixir",
          -- "heex",
       },
+      -- configs = {
+      --    highlight = {
+      --       additional_vim_regex_highlighting = { "markdown" },
+      --    },
+      -- },
    }
 
    local syntax_on = {
