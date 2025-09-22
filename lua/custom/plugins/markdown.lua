@@ -1,11 +1,12 @@
 return {
    {
       "MeanderingProgrammer/render-markdown.nvim",
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' }, -- if you use standalone mini plugins
       dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-      enabled = false,
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
       opts = {
-         heading = { enabled = false },
-
          link = {
             -- Turn on / off inline link icon rendering.
             enabled = true,
@@ -32,11 +33,12 @@ return {
             highlight = "RenderMarkdownLink",
             -- Applies to WikiLink elements.
             wiki = {
-               icon = "󱗖  ",
+               icon = "󱗖 ",
                body = function()
                   return nil
                end,
                highlight = "RenderMarkdownWikiLink",
+               scope_highlight = nil,
             },
             -- Define custom destination patterns so icons can quickly inform you of what a link
             -- contains. Applies to 'inline_link', 'uri_autolink', and wikilink nodes. When multiple
@@ -63,5 +65,16 @@ return {
             },
          },
       },
+   },
+
+   -- install with yarn or npm
+   {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && npm install",
+      init = function()
+         vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
    },
 }
