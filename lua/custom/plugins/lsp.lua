@@ -125,6 +125,8 @@ return {
                filetypes = { "heex" },
             },
 
+            pyright = true,
+
             -- cssls = {
             --   server_capabilities = {
             --     documentFormattingProvider = false,
