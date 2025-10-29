@@ -222,7 +222,7 @@ return {
                capabilities = capabilities,
             }, config)
 
-            lspconfig[name].setup(config)
+            vim.lsp.config[name] = config
          end
 
          local disable_semantic_tokens = {
