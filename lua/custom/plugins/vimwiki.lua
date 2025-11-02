@@ -26,21 +26,4 @@ return {
          -- vim.g.vimwiki_ext2syntax = { md = "markdown" }
       end,
    },
-   {
-      "mfulz/DokuVimNG",
-      cond = false,
-      config = function()
-         require("DokuVimNG").setup {
-            urls = {
-               "https://wiki.vonhirschfeld.eu",
-               -- "https://other.dokuwiki.url",
-            },
-            creds = {
-               { user = "niklas", pass = "0QWlVGW!" },
-               -- { user = "user2", pass = "pass2" },
-            },
-            keepassxc = false,
-         }
-      end,
-   },
 }
