@@ -77,4 +77,39 @@ return {
       end,
       ft = { "markdown" },
    },
+   {
+      "DAmesberger/sc-im.nvim",
+      ft = { "markdown" },
+      config = function()
+         require("sc-im").setup {
+            ft = "scim",
+            include_sc_file = true,
+            update_sc_from_md = true,
+            link_fmt = 1,
+            split = "floating",
+            float_config = {
+               height = 0.9,
+               width = 0.9,
+               style = "minimal",
+               border = "single",
+               hl = "Normal",
+               blend = 0,
+            },
+         }
+
+         -- Keybindings
+         vim.api.nvim_set_keymap(
+            "n",
+            "<leader>sc",
+            ":lua require'sc-im'.open_in_scim()<CR>",
+            { noremap = true, silent = true }
+         )
+         vim.api.nvim_set_keymap(
+            "t",
+            "<leader>x",
+            [[<C-\><C-n>:lua require('sc-im').close()<CR>]],
+            { noremap = true, silent = true }
+         )
+      end,
+   },
 }

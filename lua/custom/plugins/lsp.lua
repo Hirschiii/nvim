@@ -77,12 +77,7 @@ return {
 
          local servers = {
             bashls = true,
-            lua_ls = {
-               server_capabilities = {
-                  semanticTokensProvider = vim.NIL,
-               },
-            },
-
+            lua_ls = true,
             kotlin_language_server = true,
 
             texlab = {
@@ -225,9 +220,9 @@ return {
             vim.lsp.config[name] = config
          end
 
-         local disable_semantic_tokens = {
-            lua = true,
-         }
+         -- local disable_semantic_tokens = {
+         --    lua = true,
+         -- }
 
          vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
