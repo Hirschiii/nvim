@@ -217,6 +217,7 @@ return {
                capabilities = capabilities,
             }, config)
 
+			vim.lsp.enable(name)
             vim.lsp.config[name] = config
          end
 
