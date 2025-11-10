@@ -3,15 +3,15 @@ local setup = function()
    local conform = require "conform"
    conform.setup {
       formatters = {
-         ["ml-format"] = {
-            command = "./_build/_private/default/.dev-tool/ocamlformat/ocamlformat/target/bin/ocamlformat",
-            args = {
-               "--enable-outside-detected-project",
-               "--name",
-               "$FILENAME",
-               "-",
-            },
-         },
+         -- ["ml-format"] = {
+         --    command = "./_build/_private/default/.dev-tool/ocamlformat/ocamlformat/target/bin/ocamlformat",
+         --    args = {
+         --       "--enable-outside-detected-project",
+         --       "--name",
+         --       "$FILENAME",
+         --       "-",
+         --    },
+         -- },
       },
       formatters_by_ft = {
          lua = { "stylua" },
@@ -21,6 +21,7 @@ local setup = function()
          markdown = { "prettier" },
          html = { "htmlbeautifier" },
          svg = { "htmlbeautifier" },
+         java = { "google-java-format" },
       },
    }
 

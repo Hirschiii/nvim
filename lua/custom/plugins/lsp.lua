@@ -78,7 +78,7 @@ return {
          local servers = {
             bashls = true,
             lua_ls = true,
-            kotlin_language_server = true,
+            java_language_server = true,
 
             texlab = {
                filetypes = { "tex", "plaintex", "context", "latex" },
