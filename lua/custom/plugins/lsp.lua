@@ -217,13 +217,12 @@ return {
                capabilities = capabilities,
             }, config)
 
-			vim.lsp.enable(name)
             vim.lsp.config[name] = config
          end
 
-         -- local disable_semantic_tokens = {
-         --    lua = true,
-         -- }
+         local disable_semantic_tokens = {
+            lua = true,
+         }
 
          vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
