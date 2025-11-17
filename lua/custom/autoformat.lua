@@ -12,6 +12,13 @@ local setup = function()
          --       "-",
          --    },
          -- },
+         -- ["checkstyle"] = {
+         --    command = "checkstyle",
+         --    args = { "-f", "sarif", "-c", "$CHECKSTYLE_CONFIG_FILE" },
+         --    env = {
+         --       CHECKSTYLE_CONFIG_FILE = "/home/niklas/projects/uni/proggen/uebung/sheet1_uebungsblatt/checkstyle-sheet1.xml",
+         --    },
+         -- },
       },
       formatters_by_ft = {
          lua = { "stylua" },
@@ -21,9 +28,13 @@ local setup = function()
          markdown = { "prettier" },
          html = { "htmlbeautifier" },
          svg = { "htmlbeautifier" },
-         java = { "google-java-format" },
+         -- java = { "google-java-format" },
       },
    }
+
+   -- conform.formatters.google-java-format = {
+   --  options = {}
+   -- }
 
    conform.formatters.prettier = {
       options = {
@@ -75,6 +86,7 @@ local setup = function()
             bufnr = args.buf,
             lsp_fallback = true,
             quiet = true,
+            async = true,
          }
       end,
    })

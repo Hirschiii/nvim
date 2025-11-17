@@ -78,8 +78,15 @@ return {
          local servers = {
             bashls = true,
             lua_ls = true,
-            java_language_server = true,
+            -- java_language_server = true,
 
+            jdtls = {
+               settings = {
+                  ["java.checkstyle.configurationFile"] = "${workspaceFolder}/checkstyle.xml",
+                  ["java.checkstyle.version"] = "8.45", -- Oder die von Ihnen verwendete Version
+                  ["java.checkstyle.enabled"] = true,
+               },
+            },
             texlab = {
                filetypes = { "tex", "plaintex", "context", "latex" },
                settings = {

@@ -2,6 +2,7 @@ return {
    {
 
       "mfussenegger/nvim-lint",
+      cond = true,
       opts = {
          -- Event to trigger linters
          events = { "BufWritePost", "BufReadPost", "InsertLeave" },
@@ -26,6 +27,9 @@ return {
             --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
             --   end,
             -- },
+            checkstyle = {
+               config_file = "/home/niklas/projects/uni/proggen/uebung/sheet1_uebungsblatt/checkstyle-sheet1.xml",
+            },
          },
       },
       config = function(_, opts)
