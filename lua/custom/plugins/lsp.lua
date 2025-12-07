@@ -79,13 +79,14 @@ return {
             bashls = true,
             lua_ls = true,
             -- java_language_server = true,
+			clangd = true,
 
             jdtls = {
-               settings = {
-                  ["java.checkstyle.configurationFile"] = "${workspaceFolder}/checkstyle.xml",
-                  ["java.checkstyle.version"] = "8.45", -- Oder die von Ihnen verwendete Version
-                  ["java.checkstyle.enabled"] = true,
-               },
+               -- settings = {
+               --    ["java.checkstyle.configurationFile"] = "${workspaceFolder}/checkstyle.xml",
+               --    ["java.checkstyle.version"] = "8.45", -- Oder die von Ihnen verwendete Version
+               --    ["java.checkstyle.enabled"] = true,
+               -- },
             },
             texlab = {
                filetypes = { "tex", "plaintex", "context", "latex" },
@@ -290,7 +291,7 @@ return {
          require("lsp_lines").setup()
          vim.diagnostic.config { virtual_text = false, virtual_lines = false }
 
-         vim.keymap.set("", "<leader>l", function()
+         vim.keymap.set("n", "<leader>l", function()
             local config = vim.diagnostic.config() or {}
             if config.virtual_lines then
                vim.diagnostic.config { virtual_lines = false }

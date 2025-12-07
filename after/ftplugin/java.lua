@@ -8,4 +8,6 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.colorcolumn = "80"
 
 
-require('lint.linters.checkstyle').config_file = '/home/niklas/projects/uni/proggen/uebung/sheet1_uebungsblatt/checkstyle-sheet1.xml'
+-- require('lint.linters.checkstyle').config_file = '/home/niklas/projects/uni/proggen/uebung/blatt1/checkstyle-sheet1.xml'
+
+require('lint.linters.checkstyle').config_file = vim.fn.system('ls -d $HOME/projects/uni/proggen/uebung/blatt[0-9]* | sort -n | head -1 | sed \'s/.*blatt//\' | xargs -I {} echo "$HOME/projects/uni/proggen/uebung/blatt{}/checkstyle-sheet{}.xml"'):gsub('\n', '')
