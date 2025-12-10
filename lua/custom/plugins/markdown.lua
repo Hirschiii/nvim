@@ -87,6 +87,9 @@ return {
             update_sc_from_md = true,
             link_fmt = 1,
             split = "floating",
+			highlight = {
+				enabled = true,
+			},
             float_config = {
                height = 0.9,
                width = 0.9,
