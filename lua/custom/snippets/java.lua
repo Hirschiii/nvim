@@ -20,7 +20,7 @@ ls.add_snippets("java", {
       trig = "kit_doc",
    }, {
       t { "/**", "*" },
-      i(0, "Name des Prgramms, ggf Aufgabe"),
+      i(1, " Name des Prgramms, ggf Aufgabe"),
       t { ".", "*", "* @author ubnlr", "*", "*/" },
    }),
 })

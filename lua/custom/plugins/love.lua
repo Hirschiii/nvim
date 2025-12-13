@@ -4,6 +4,7 @@ return {
    event = "VeryLazy",
    version = "2.*",
    opts = {},
+   enabled = false,
    keys = {
       { "<leader>v", ft = "lua", desc = "LÖVE" },
       { "<leader>vv", "<cmd>LoveRun<cr>", ft = "lua", desc = "Run LÖVE" },

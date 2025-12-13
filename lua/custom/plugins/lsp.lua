@@ -1,6 +1,7 @@
 return {
    {
       "neovim/nvim-lspconfig",
+	  event = "BufEnter",
       dependencies = {
          {
             -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -79,7 +80,7 @@ return {
             bashls = true,
             lua_ls = true,
             -- java_language_server = true,
-			clangd = true,
+            clangd = true,
 
             jdtls = {
                -- settings = {

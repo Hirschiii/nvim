@@ -79,7 +79,9 @@ return {
    },
    {
       "DAmesberger/sc-im.nvim",
-      ft = { "markdown" },
+	  lazy = true,
+	  keys = { "<leader>sc", "<leader>x" },
+      -- ft = { "markdown" },
       config = function()
          require("sc-im").setup {
             ft = "scim",
@@ -87,9 +89,9 @@ return {
             update_sc_from_md = true,
             link_fmt = 1,
             split = "floating",
-			highlight = {
-				enabled = true,
-			},
+            highlight = {
+               enabled = true,
+            },
             float_config = {
                height = 0.9,
                width = 0.9,

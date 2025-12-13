@@ -9,6 +9,21 @@ return {
          "nvim-telescope/telescope-ui-select.nvim",
          "kkharji/sqlite.lua",
       },
+      keys = {
+         "<leader>fd",
+         "<leader>ft",
+         "<leader>fh",
+         "<leader>fg",
+         "<leader>fb",
+         "<leader>/",
+         "<leader>gw",
+         "<leader>fa",
+         "<leader>fs",
+         "<leader>en",
+         "<leader>eo",
+         "<leader>ew",
+         "<leader>fp",
+      },
       config = function()
          require "custom.telescope"
       end,

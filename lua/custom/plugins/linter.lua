@@ -2,7 +2,7 @@ return {
    {
 
       "mfussenegger/nvim-lint",
-      cond = true,
+      cond = false,
       opts = {
          -- Event to trigger linters
          events = { "BufWritePost", "BufReadPost", "InsertLeave" },
@@ -27,9 +27,13 @@ return {
             --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
             --   end,
             -- },
-            checkstyle = {
-               config_file = "/home/niklas/projects/uni/proggen/uebung/sheet1_uebungsblatt/checkstyle-sheet1.xml",
-            },
+            -- checkstyle = {
+            --    config_file = vim.fn
+            --       .system(
+            --          "ls -d $HOME/projects/uni/proggen/uebung/blatt[0-9]* | sort -n | head -1 | sed 's/.*blatt//' | xargs -I {} echo \"$HOME/projects/uni/proggen/uebung/blatt{}/checkstyle-sheet{}.xml\""
+            --       )
+            --       :gsub("\n", ""),
+            -- },
          },
       },
       config = function(_, opts)
@@ -99,6 +103,12 @@ return {
             group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
             callback = M.debounce(100, M.lint),
          })
+
+         require("lint.linters.checkstyle").config_file = vim.fn
+            .system(
+               "ls -d $HOME/projects/uni/proggen/uebung/blatt[0-9]* | sort -n | head -1 | sed 's/.*blatt//' | xargs -I {} echo \"$HOME/projects/uni/proggen/uebung/blatt{}/checkstyle-sheet{}.xml\""
+            )
+            :gsub("\n", "")
       end,
    },
 }
