@@ -16,6 +16,7 @@ local function copy_first_word(args)
 end
 
 ls.add_snippets("java", {
+   s({ trig = "author" }, { t("@author ubnlr", "") }),
    s({
       trig = "kit_doc",
    }, {

@@ -1,7 +1,7 @@
 return {
    {
       "neovim/nvim-lspconfig",
-	  event = "BufEnter",
+      event = "BufEnter",
       dependencies = {
          {
             -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins

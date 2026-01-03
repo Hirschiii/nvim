@@ -8,9 +8,16 @@ return {
       keys = { "<leader>ww", "<leader>wt" },
       init = function()
          vim.g.vimwiki_list = {
+            -- {
+            --    -- Here will be the path for your wiki
+            --    path = "~/wiki/",
+            --    -- The syntax for the wiki
+            --    syntax = "markdown",
+            --    ext = ".md",
+            -- },
             {
                -- Here will be the path for your wiki
-               path = "~/wiki/",
+               path = "~/notes/",
                -- The syntax for the wiki
                syntax = "markdown",
                ext = ".md",
