@@ -4,7 +4,8 @@ return {
       -- dependencies = {},
       build = ":TSUpdate",
       branch = "main",
-      lazy = false,
+      lazy = true,
+	  event = "BufEnter",
       config = function()
          require("custom.treesitter").setup()
       end,

@@ -1,6 +1,7 @@
 return {
    "tpope/vim-fugitive",
-   lazy = false,
+   lazy = true,
+   cmd = { "Git", "G", "Gedit", "Gsplit", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GBrowse" },
    config = function()
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
